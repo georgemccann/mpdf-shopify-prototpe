@@ -1,0 +1,16 @@
+.DS_STORE
+.vagrant
+.phpintel
+vendor/
+_sql/
+composer.lock
+src/private
+logs/
+templates/
+src/config/smtp.php
+public/uploads
+src/config/db.php
+.htaccess
+public/.htaccess
+src/settings.php
+.vscode

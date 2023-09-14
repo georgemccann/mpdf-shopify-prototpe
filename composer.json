@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mpdf/mpdf": "^8.0",
+        "kartik-v/yii2-mpdf": "dev-master"
+    }
+}

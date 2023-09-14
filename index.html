@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">  
+    <title>v12 Poster Creator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.js" integrity="sha512-mxCAjvjp0jvMdGRIEvAHOCGL6BOucqWpTBXwchElsPKNw7BEegHviDHPnYrOrzgzBiw3GD/Q1ibpA5nlFPYDMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+     
+
+    <div id="loading" class="loading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div id="main" class="container hidden">
+      <div class="py-5">
+        <div class="row py-5 align-items-center justify-content-center">
+          
+          <div class="col-12 mb-5">
+            <h1>Poster creator</h1>
+          </div>
+
+
+ 
+          <div class="col-12">
+            
+            <div id="stepOne">
+              <h2 class="mb-5">Step One</h2>
+               
+              <h3>Select Poster Size</h3>
+              <p>Select either A4, A3 or A2</p>
+              <div class="mt-5 mb-5 form-group" id="posterSizeSelector">
+                <label for="exampleInputEmail1">Poster Size</label>
+                
+                
+                <select id="posterSize" class="mb-3 form-group posterSize">
+                  <option value="a4">A4 portrait (6 styles)</option>
+                  <option value="a3">A3 landscape (12 styles)</option>
+                  <option value="a2">A2 landscape (24 styles)</option>
+                </select>
+              </div>
+
+              <div class="navigator">
+                 <button class="btn btn-primary mb-3 stepTwo">Next</button>
+              </div>
+
+            </div>
+
+ 
+            
+            <div id="sizeSelected">
+              
+
+              <div id="stepTwo" style="display:none;">
+
+                <div class="navigator">
+                  <button class="btn btn-primary mb-3 stepOne">Previous</button>
+                  <button class="btn btn-primary mb-3 stepThree">Next</button>
+                </div>
+
+                <h2 class="mb-5">Step Two</h2>
+               
+                <h3>Select Products</h3>
+                <p>Select the products you would like to add to your poster</p>
+
+                <div class="mt-5 form-group" id="productSelectors">
+  
+                  <label for="exampleInputEmail1">Search</label>
+                  <input id="filter" type="text" class="form-control mb-3">
+                  <div class="row" id="productListSelector">
+
+                  </div>
+                </div>
+
+                <div class="navigator">
+                  <button class="btn btn-primary mb-3 stepOne">Previous</button>
+                  <button class="btn btn-primary mb-3 stepThree">Next</button>
+                </div>
+
+              </div>
+
+              <div id="stepThree" style="display:none;">
+
+                <h2 class="mb-5">Step Three</h2>
+               
+                <h3>Add Company Details</h3>
+                <p>Enter your company information to display on your poster</p>
+
+
+                <div class="mt-5 form-group" id="companyLogos">
+                  <label for="exampleInputEmail1">Header Logos</label>
+                  <br><br>
+                  <label for="exampleInputEmail1">Primary Logo*</label>
+                  <input class="form-control mb-3" id="logoOne" type='file'>
+                   
+                  <label for="exampleInputEmail1">Secondary Logo</label>
+                  <input class="form-control mb-3" id="logoTwo" type='file'>
+                </div>
+
+                <div class="form-group" id="footerTextBox">
+                  <label for="exampleInputEmail1">Your Company Name</label>
+                  
+                  
+                  <input type="text" id="companyName" required class="required form-control mb-3" />
+
+                </div>
+
+               
+
+                <div class="form-group" id="footerTextBox">
+                  <label for="exampleInputEmail1">Poster Title*</label>
+                  
+                  
+                  <input type="text" id="posterTitle" required class="required form-control mb-3" />
+
+                </div>
+
+                
+
+                <div class="form-group" id="footerTextBox">
+                  <label for="exampleInputEmail1">Address</label>
+                  
+                  
+                  <input type="text" id="footerTextAddress" class="form-control mb-3" />
+
+                  <label for="exampleInputEmail1">Phone</label>
+                  
+                  
+                  <input type="text" id="footerTextPhone" class="form-control mb-3" />
+
+                  <label for="exampleInputEmail1">Email</label>
+                  
+                  
+                  <input type="text" id="footerTextEmail" class="form-control mb-3" />
+
+                </div>
+
+                <div class="navigator">
+                  <button class="btn btn-primary mb-3 stepTwo">Previous</button>
+                  <button class="btn btn-primary mb-3" id="generatePoster">Generate Poster</button>
+                </div>
+
+     
+                 
+
+              </div>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+    </div>
+
+ 
+ 
+
+  <script>
+
+  let logoOne;
+  let logoTwo;
+
+  function readFileOne() {
+  
+    if (this.files && this.files[0]) {
+      
+      var FR= new FileReader();
+      
+      FR.addEventListener("load", function(e) { 
+        logoOne = e.target.result;
+      }); 
+      
+      FR.readAsDataURL( this.files[0] );
+    }
+    
+  }
+
+  document.getElementById("logoOne").addEventListener("change", readFileOne);
+
+  document.getElementById("posterSize").addEventListener("change", clearSelected);
+  
+  function clearSelected() {
+  
+    $(".productSelect.selected").removeClass('selected');
+    
+  }
+
+
+  function readFileTwo() {
+  
+    if (this.files && this.files[0]) {
+      
+      var FR= new FileReader();
+      
+      FR.addEventListener("load", function(e) {
+        logoTwo = e.target.result;
+      }); 
+      
+      FR.readAsDataURL( this.files[0] );
+    }
+    
+  }
+
+  document.getElementById("logoTwo").addEventListener("change", readFileTwo);
+ 
+  $(document).ready(function($) {
+
+    $("#filter").keyup(function() {
+
+      // Retrieve the input field text and reset the count to zero
+      var filter = $(this).val(),
+        count = 0;
+
+      // Loop through the comment list
+      $('#productListSelector div').each(function() {
+
+
+        // If the list item does not contain the text phrase fade it out
+        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+          $(this).hide();
+
+          // Show the list item if the phrase matches and increase the count by 1
+        } else {
+          $(this).show();
+          count++;
+        }
+
+      });
+
+    });
+
+  
+
+    $('body').on('click', '.stepOne', function() {
+      $('#stepOne').show();
+      $('#stepTwo').hide();
+      $('#stepThree').hide();
+    });
+    $('body').on('click', '.stepTwo', function() {
+      $('#stepOne').hide();
+      $('#stepTwo').show();
+      $('#stepThree').hide();
+    });
+    $('body').on('click', '.stepThree', function() {
+      $('#stepOne').hide();
+      $('#stepTwo').hide();
+      $('#stepThree').show();
+    });
+
+
+    var globalResponse;
+
+    function set_globalResponse(x){
+      globalResponse = x;
+    }
+
+    var loading = true;
+    var ajaxResp = $.ajax({
+      url: "/getProducts.php",
+      type: 'GET',
+      dataType: "json"
+      })
+    .done(function(response) { 
+      $("#loading").hide();
+      $("#main").removeClass("hidden");
+   
+      var jsonData = response;
+
+      set_globalResponse(jsonData);
+      for (var i = 0; i < jsonData.length; i++) {
+          var json = jsonData[i];
+
+          $('#productListSelector').append( "<div class='col-12 col-md-3 mb-4'><div class='text-center productSelect item-"+json.id+"'><img class='w-50 img-fluid' src='"+json.image.src+"'/><div class='productInfo'><h4>"+json.title+"</h4><br/><p><strong>Additional Information</strong></p><input type='text' class='additionalInfo' maxlength='20'></div></div>" );
+          
+          $('.productSelector').append($('<option>', { 
+              value: json.id,
+              text : json.title 
+          }));
+      }
+    });
+    
+    
+    
+   
+
+    $('body').on('click', '.productSelect', function() {
+      var size = $('#posterSize').val();
+      var listLength = 23;
+      if (size == 'a3') {
+        listLength = 11;
+      } else if (size == 'a4') {
+        listLength = 5;
+      } 
+
+      console.log($(".productSelect.selected").length);
+      console.log(listLength);
+      if ($(".productSelect.selected").length <= listLength) {
+  
+        $(this).toggleClass('selected');
+    
+      } else {
+        $(this).removeClass('selected');
+      } 
+    });
+
+    $('body').on('click', '.additionalInfo', function(e) {
+       e.stopPropagation();
+    });
+
+
+    $('#generatePoster').click(function(){
+      var dataArray = []; 
+      var count = -1;
+      var id;
+      var posterTitle = $('#posterTitle').val();
+      var companyName = $('#companyName').val();
+      var footerTextAddress = $('#footerTextAddress').val();
+      var footerTextPhone = $('#footerTextPhone').val();
+      var footerTextEmail = $('#footerTextEmail').val();
+      var posterSize = $('#posterSize').val();
+      //var posterOrientatiton = $('#posterOrientatiton').val();
+      let posterOrientatiton = "P";
+      
+
+      if (posterTitle == "" || !logoOne) {
+
+        alert('please ensure all required fields are complete')
+       
+      } else {
+
+        if ($('#posterSize').val() == "a4") {
+          posterOrientatiton = "P"; 
+        } else { 
+          posterOrientatiton = "L"; 
+        }
+
+        console.log(posterOrientatiton);
+        $('.productSelect.selected').each(function() {
+          count++;
+
+          var id = $(this).prop('class').match(/item-([0-9]+)/)[1];
+
+          var additionalInfo = $(this).find('.additionalInfo').val();
+   
+          for (var i = 0; i < globalResponse.length; i++) {
+
+            if (globalResponse[i].id == id) {
+   
+              let sizeFrom=globalResponse[i].options[0].values[0];
+              let sizeTo=globalResponse[i].options[0].values[globalResponse[i].options[0].values.length-1]; 
+
+              let tags = globalResponse[i].tags;
+              var match = tags.split(', ')
+              var spec = ''; 
+              let productTitle = globalResponse[i].title;
+              productTitle = productTitle.replace(/IGS/g,'');
+
+              for (var a in match)
+              {
+                if (match[a].match("^SPEC-")) {
+                  spec = match[a] 
+                  spec = spec.replace('SPEC-','');
+                  spec = spec.replace(/-/g, ' ');
+                }
+                  
+              }
+              
+              let sizes
+              if (sizeFrom != "Default Title") {
+                sizes = 'Sizes ' + sizeFrom + ' - ' + sizeTo; 
+              }
+              
+
+              dataArray[count] = {id:id, title:globalResponse[i].title, image: globalResponse[i].image.src, sizes: sizes, logoOne:logoOne, logoTwo:logoTwo, posterTitle:posterTitle, posterSize:posterSize, posterOrientatiton:posterOrientatiton, additionalInfo:additionalInfo, footerTextAddress:footerTextAddress, footerTextPhone:footerTextPhone, footerTextEmail:footerTextEmail, spec: spec, companyName: companyName}
+            } 
+          }
+   
+          
+        });
+   
+        var jsonString = JSON.stringify(dataArray);
+        $.ajax({
+          type: "POST",
+          url: "generatePdf.php",
+          data: {data : jsonString}, 
+          cache: false,
+
+          success: function(response){
+            window.open(response, '_blank');
+          }
+        }); 
+
+      }
+
+      
+    });
+    
+ 
+    
+  });
+  </script>   
+  </body>
+</html>
